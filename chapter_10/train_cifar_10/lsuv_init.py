@@ -1,4 +1,4 @@
-# from https://github.com/yanchao727/LSUV-keras/blob/master/lsuv_init.py
+# from https://github.com/ducha-aiki/LSUV-keras
 from __future__ import print_function
 import numpy as np
 from keras.models import Model
@@ -24,7 +24,7 @@ def get_activations(model, layer, X_batch):
 def LSUVinit(model,batch):
     # only these layer classes considered for LSUV initialization; add more if needed
     classes_to_consider = (Dense, Convolution2D)
-    
+
     margin = 0.1
     max_iter = 10
     layers_inintialized = 0
@@ -63,5 +63,5 @@ def LSUVinit(model,batch):
             print(var1)
             if iter1 > max_iter:
                 break
-    print('LSUV: total layers initialized', layers_inintialized)   
+    print('LSUV: total layers initialized', layers_inintialized)
     return model
