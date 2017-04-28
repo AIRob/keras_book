@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 '''
 DCGAN on MNIST using Keras
 Author: Rowel Atienza
