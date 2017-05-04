@@ -78,26 +78,14 @@ model.add(Activation('relu'))
 model.add(GlobalMaxPooling2D())
 model.add(Dropout(0.25))
 
-#model.add(ZeroPadding2D((1, 1)))
-#model.add(MaxPooling2D(pool_size=(2, 2)))
-#model.add(Flatten())
-#model.add(Dropout(0.2))
-'''
-model.add(Conv2D(512, (3, 3), padding='same'))
-model.add(Activation('relu'))
-model.add(ZeroPadding2D((1, 1)))
-model.add(MaxPooling2D(pool_size=(2, 2)))
-model.add(Dropout(0.25))
-'''
-
 model.add(Dense(500))
 model.add(Activation('relu'))
-model.add(Dropout(0.25))
+model.add(Dropout(0.4))
 model.add(Dense(num_classes))
 model.add(Activation('softmax'))
 
 # initiate RMSprop optimizer
-opt = keras.optimizers.Adam(lr=0.0001)
+opt = keras.optimizers.Adam(lr=0.0001, decay=1e-6)
 
 # Let's train the model using RMSprop
 model.compile(loss='categorical_crossentropy',
@@ -122,19 +110,6 @@ if not data_augmentation:
 else:
     print('Using real-time data augmentation.')
     # This will do preprocessing and realtime data augmentation:
-    '''
-    datagen = ImageDataGenerator(
-        featurewise_center=False,  # set input mean to 0 over the dataset
-        samplewise_center=False,  # set each sample mean to 0
-        featurewise_std_normalization=False,  # divide inputs by std of the dataset
-        samplewise_std_normalization=False,  # divide each input by its std
-        zca_whitening=False,  # apply ZCA whitening
-        rotation_range=0,  # randomly rotate images in the range (degrees, 0 to 180)
-        width_shift_range=0.1,  # randomly shift images horizontally (fraction of total width)
-        height_shift_range=0.1,  # randomly shift images vertically (fraction of total height)
-        horizontal_flip=True,  # randomly flip images
-        vertical_flip=False)  # randomly flip images
-    '''
     datagen = ImageDataGenerator(
         featurewise_center=False,  # set input mean to 0 over the dataset
         samplewise_center=False,  # set each sample mean to 0
