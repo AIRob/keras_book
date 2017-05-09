@@ -207,5 +207,4 @@ if __name__ == '__main__':
     timer = ElapsedTimer()
     mnist_dcgan.train(train_steps=10000, batch_size=256, save_interval=500)
     timer.elapsed_time()
-    mnist_dcgan.plot_images(fake=True, save2file=True)
     mnist_dcgan.plot_images(fake=False, save2file=True)
