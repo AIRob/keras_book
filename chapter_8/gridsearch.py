@@ -70,6 +70,10 @@ validator = GridSearchCV(my_classifier,
                          n_jobs=1)
 
 validator.fit(x_train, y_train)
+
+# result:
+# The parameters of the best model are:
+# {'dense_layer_sizes': [64, 64], 'pool_size': 2, 'filters': 8, 'epochs': 6, 'kernel_size': 3}
 print('The parameters of the best model are: ')
 print(validator.best_params_)
 
